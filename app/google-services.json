@@ -7,12 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:948768981588:android:2b9c810d5b35e3319fa3c1",
+        "mobilesdk_app_id": "1:948768981588:android:6eab912f151588009fa3c1",
         "android_client_info": {
-          "package_name": "com.wolpack"
+          "package_name": "com.wolfpack"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "948768981588-ounrhsntafdfd3i3fih5llcu8thag4er.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAscVMshsmOEExvISM4znNK2fTxE0jGKQs"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "948768981588-ounrhsntafdfd3i3fih5llcu8thag4er.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
