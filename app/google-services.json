@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "948768981588",
+    "project_id": "practicafinal-5503b",
+    "storage_bucket": "practicafinal-5503b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:948768981588:android:2b9c810d5b35e3319fa3c1",
+        "android_client_info": {
+          "package_name": "com.wolpack"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAscVMshsmOEExvISM4znNK2fTxE0jGKQs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
