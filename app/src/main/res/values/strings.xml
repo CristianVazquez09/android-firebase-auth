@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">Practica Final</string>
+    <string name="app_name">PracticaFinal</string>
+    <string name="label_nombre">Nombre</string>
+    <string name="label_apellido">Apellido</string>
+    <string name="label_telefono">Teléfono</string>
+    <string name="label_email">Correo electrónico</string>
+    <string name="label_password">Contraseña</string>
+    <string name="btn_login">Iniciar sesión</string>
+    <string name="btn_register">Crear cuenta</string>
+    <string name="btn_google">Continuar con Google</string>
+    <string name="btn_forgot">¿Olvidaste tu contraseña?</string>
+    <string name="btn_logout">Cerrar sesión</string>
+    <string name="link_go_register">¿No tienes cuenta? Regístrate</string>
+    <string name="link_go_login">¿Ya tienes cuenta? Inicia sesión</string>
+    <string name="msg_reset_sent">Revisa tu correo para restablecer tu contraseña</string>
+    <string name="error_empty_fields">Por favor completa todos los campos</string>
+    <string name="error_invalid_email">Correo electrónico inválido</string>
+    <string name="error_password_short">La contraseña debe tener al menos 6 caracteres</string>
+    <string name="error_phone_invalid">Número de teléfono inválido</string>
 </resources>
