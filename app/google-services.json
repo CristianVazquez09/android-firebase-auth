@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "948768981588-t2ljnovuc0hf76snrf7iuohkqnog20m2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wolfpack",
+            "certificate_hash": "b12f66aedd9cb75471fe0acd53816e63f0e003e7"
+          }
+        },
+        {
           "client_id": "948768981588-ounrhsntafdfd3i3fih5llcu8thag4er.apps.googleusercontent.com",
           "client_type": 3
         }

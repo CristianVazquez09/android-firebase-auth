@@ -8,9 +8,9 @@ import com.wolfpack.data.repository.AuthRepository
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.launch
 
-class LoginViewModel(
-    private val repo: AuthRepository = AuthRepository()
-) : ViewModel() {
+class LoginViewModel : ViewModel() {
+
+    private val repo: AuthRepository by lazy { AuthRepository() }
 
     private val _loginResult = MutableLiveData<Result<FirebaseUser>>()
     val loginResult: LiveData<Result<FirebaseUser>> = _loginResult

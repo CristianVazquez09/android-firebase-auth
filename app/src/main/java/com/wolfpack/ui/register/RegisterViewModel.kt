@@ -9,9 +9,9 @@ import com.wolfpack.data.repository.AuthRepository
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.launch
 
-class RegisterViewModel(
-    private val repo: AuthRepository = AuthRepository()
-) : ViewModel() {
+class RegisterViewModel : ViewModel() {
+
+    private val repo: AuthRepository by lazy { AuthRepository() }
 
     private val _registerResult = MutableLiveData<Result<FirebaseUser>>()
     val registerResult: LiveData<Result<FirebaseUser>> = _registerResult
@@ -27,7 +27,8 @@ class RegisterViewModel(
         password: String
     ): Boolean {
         if (nombre.isBlank() || apellido.isBlank() || telefono.isBlank()) return false
-        if (email.isBlank() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) return false
+        val emailRegex = Regex("^[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}$")
+        if (email.isBlank() || !emailRegex.matches(email)) return false
         if (password.length < 6) return false
         return true
     }

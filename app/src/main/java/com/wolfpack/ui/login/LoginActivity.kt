@@ -31,7 +31,7 @@ class LoginActivity : BaseActivity() {
             val account = task.getResult(ApiException::class.java)
             account.idToken?.let { viewModel.loginWithGoogle(it) }
         } catch (e: ApiException) {
-            Toast.makeText(this, "Google Sign-In falló: ${e.message}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Google Sign-In falló (código ${e.statusCode}): ${e.message}", Toast.LENGTH_LONG).show()
         }
     }
 
