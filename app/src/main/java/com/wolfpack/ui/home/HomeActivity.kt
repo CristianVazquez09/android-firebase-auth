@@ -6,6 +6,8 @@ import androidx.activity.viewModels
 import com.wolfpack.databinding.ActivityHomeBinding
 import com.wolfpack.ui.base.BaseActivity
 import com.wolfpack.ui.login.LoginActivity
+import com.wolfpack.ui.nota.NotaListActivity
+import com.wolfpack.ui.materia.MateriaListActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -27,15 +29,18 @@ class HomeActivity : BaseActivity() {
     }
 
     private fun displayUserInfo() {
-        binding.tvUserEmail.text = viewModel.getCurrentUserEmail()
-
-        val loginTime = tokenManager.getLoginTime()
-        val expiresAt = loginTime + (3 * 60 * 60 * 1000L)
-        val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
-        binding.tvSessionInfo.text = "Sesión expira a las ${sdf.format(Date(expiresAt))}"
+        val email = viewModel.getCurrentUserEmail()
+        binding.tvWelcome.text = "¡Bienvenido!"
+        binding.tvEmail.text = email
     }
 
     private fun setupListeners() {
+        binding.btnVerNotas.setOnClickListener {
+            startActivity(Intent(this, NotaListActivity::class.java))
+        }
+        binding.btnVerMaterias.setOnClickListener {
+            startActivity(Intent(this, MateriaListActivity::class.java))
+        }
         binding.btnLogout.setOnClickListener {
             viewModel.logout()
             tokenManager.clearSession()
