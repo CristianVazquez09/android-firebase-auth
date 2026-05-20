@@ -17,4 +17,17 @@
     <string name="error_invalid_email">Correo electrónico inválido</string>
     <string name="error_password_short">La contraseña debe tener al menos 6 caracteres</string>
     <string name="error_phone_invalid">Número de teléfono inválido</string>
+    <string name="mis_notas">Mis Notas</string>
+    <string name="mis_materias">Mis Materias</string>
+    <string name="nueva_nota">Nueva Nota</string>
+    <string name="editar_nota">Editar Nota</string>
+    <string name="nueva_materia">Nueva Materia</string>
+    <string name="editar_materia">Editar Materia</string>
+    <string name="guardar">Guardar</string>
+    <string name="sin_notas">No tienes notas aún</string>
+    <string name="sin_materias">No tienes materias aún</string>
+    <string name="titulo_hint">Título</string>
+    <string name="contenido_hint">Contenido</string>
+    <string name="materia_hint">Materia</string>
+    <string name="materia_activa">Materia activa</string>
 </resources>

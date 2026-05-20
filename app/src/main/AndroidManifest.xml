@@ -27,5 +27,10 @@
         <activity android:name=".ui.forgotpassword.ForgotPasswordActivity" />
         <activity android:name=".ui.home.HomeActivity" />
 
+        <activity android:name=".ui.nota.NotaListActivity" />
+        <activity android:name=".ui.nota.NotaFormActivity" />
+        <activity android:name=".ui.materia.MateriaListActivity" />
+        <activity android:name=".ui.materia.MateriaFormActivity" />
+
     </application>
 </manifest>
