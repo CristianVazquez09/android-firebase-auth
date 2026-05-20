@@ -1,0 +1,69 @@
+package com.wolfpack.ui.nota
+
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.wolfpack.data.model.Materia
+import com.wolfpack.data.model.Nota
+import com.wolfpack.data.repository.MateriaRepository
+import com.wolfpack.data.repository.NotaRepository
+import kotlinx.coroutines.launch
+import java.util.UUID
+
+class NotaFormViewModel(
+    private val notaRepo: NotaRepository = NotaRepository(),
+    private val materiaRepo: MateriaRepository = MateriaRepository()
+) : ViewModel() {
+
+    private val _saved = MutableLiveData(false)
+    val saved: LiveData<Boolean> = _saved
+
+    private val _error = MutableLiveData<String?>()
+    val error: LiveData<String?> = _error
+
+    private val _loading = MutableLiveData(false)
+    val loading: LiveData<Boolean> = _loading
+
+    private val _materias = MutableLiveData<List<Materia>>()
+    val materias: LiveData<List<Materia>> = _materias
+
+    fun loadMaterias(userId: String) {
+        viewModelScope.launch {
+            materiaRepo.getMaterias(userId)
+                .onSuccess { list -> _materias.value = list.filter { it.activo } }
+                .onFailure { _error.value = it.message }
+        }
+    }
+
+    fun saveNota(
+        userId: String,
+        uuid: String?,
+        titulo: String,
+        contenido: String,
+        materiaId: String,
+        fechaCreacion: Long
+    ) {
+        if (titulo.isBlank()) {
+            _error.value = "El título no puede estar vacío"
+            return
+        }
+        _loading.value = true
+        val now = System.currentTimeMillis()
+        val nota = Nota(
+            uuid = uuid ?: UUID.randomUUID().toString(),
+            titulo = titulo.trim(),
+            contenido = contenido.trim(),
+            materiaId = materiaId,
+            userId = userId,
+            fechaCreacion = if (uuid == null) now else fechaCreacion,
+            fechaModificacion = now
+        )
+        viewModelScope.launch {
+            notaRepo.saveNota(userId, nota)
+                .onSuccess { _saved.value = true }
+                .onFailure { _error.value = it.message }
+            _loading.value = false
+        }
+    }
+}
