@@ -1,14 +1,24 @@
 <resources>
-    <color name="colorPrimary">#1565C0</color>
-    <color name="colorPrimaryDark">#0D47A1</color>
-    <color name="colorAccent">#42A5F5</color>
-    <color name="colorBackground">#F5F7FA</color>
+    <color name="colorPrimary">#128C45</color>
+    <color name="colorPrimaryDark">#0B6E34</color>
+    <color name="colorAccent">#B9F3D8</color>
+    <color name="colorBackground">#F4F4F6</color>
     <color name="colorSurface">#FFFFFF</color>
+    <color name="colorSurfaceVariant">#F8F8F9</color>
     <color name="colorOnPrimary">#FFFFFF</color>
-    <color name="colorTextPrimary">#212121</color>
-    <color name="colorTextSecondary">#757575</color>
-    <color name="colorInputBackground">#F0F4FF</color>
-    <color name="colorDivider">#E0E0E0</color>
-    <color name="colorError">#D32F2F</color>
+    <color name="colorTextPrimary">#111114</color>
+    <color name="colorTextSecondary">#68686E</color>
+    <color name="colorInputBackground">#FFFFFF</color>
+    <color name="colorDivider">#E3E3E8</color>
+    <color name="colorError">#D93B3B</color>
+    <color name="colorSuccess">#16D875</color>
+    <color name="colorBlueAccent">#4CB3FF</color>
+    <color name="colorPinkAccent">#FF4FA3</color>
+    <color name="colorFavorite">#FFC107</color>
+    <color name="colorDisabledIcon">#9A9AA0</color>
     <color name="colorGoogleRed">#EA4335</color>
+    <color name="colorNeonGreenSoft">#D8FBE8</color>
+    <color name="colorPurpleAccent">#A855F7</color>
+    <color name="colorPurpleSoft">#F0E6FF</color>
+    <color name="colorRedSoft">#FFE7E7</color>
 </resources>

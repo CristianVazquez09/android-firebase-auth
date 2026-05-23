@@ -19,16 +19,25 @@ class MateriaFormViewModel(
     private val _error = MutableLiveData<String?>()
     val error: LiveData<String?> = _error
 
-    fun saveMateria(userId: String, uuid: String?, nombre: String, activo: Boolean) {
+    fun saveMateria(
+        userId: String,
+        uuid: String?,
+        nombre: String,
+        activo: Boolean,
+        color: String,
+        icono: String
+    ) {
         if (nombre.isBlank()) {
-            _error.value = "El nombre no puede estar vacío"
+            _error.value = "El nombre no puede estar vacio"
             return
         }
         val materia = Materia(
             uuid = uuid ?: UUID.randomUUID().toString(),
             nombre = nombre.trim(),
             activo = activo,
-            userId = userId
+            userId = userId,
+            color = color,
+            icono = icono
         )
         viewModelScope.launch {
             repo.saveMateria(userId, materia)

@@ -24,4 +24,10 @@ class NotaRepository(
     suspend fun deleteNota(userId: String, uuid: String): Result<Unit> = runCatching {
         col(userId).document(uuid).delete().await()
     }
+
+    suspend fun updateFavorita(userId: String, uuid: String, favorita: Boolean): Result<Unit> =
+        runCatching {
+            col(userId).document(uuid).update("favorita", favorita).await()
+        }
 }
+
