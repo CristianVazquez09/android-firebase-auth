@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -31,6 +32,10 @@
         <activity android:name=".ui.nota.NotaFormActivity" />
         <activity android:name=".ui.materia.MateriaListActivity" />
         <activity android:name=".ui.materia.MateriaFormActivity" />
+
+        <receiver
+            android:name=".notifications.ReminderReceiver"
+            android:exported="false" />
 
     </application>
 </manifest>

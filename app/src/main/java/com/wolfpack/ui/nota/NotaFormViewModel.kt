@@ -9,7 +9,6 @@ import com.wolfpack.data.model.Nota
 import com.wolfpack.data.repository.MateriaRepository
 import com.wolfpack.data.repository.NotaRepository
 import kotlinx.coroutines.launch
-import java.util.UUID
 
 class NotaFormViewModel(
     private val notaRepo: NotaRepository = NotaRepository(),
@@ -36,31 +35,14 @@ class NotaFormViewModel(
         }
     }
 
-    fun saveNota(
-        userId: String,
-        uuid: String?,
-        titulo: String,
-        contenido: String,
-        materiaId: String,
-        fechaCreacion: Long
-    ) {
-        if (titulo.isBlank()) {
-            _error.value = "El título no puede estar vacío"
+    fun saveNota(nota: Nota) {
+        if (nota.titulo.isBlank()) {
+            _error.value = "El titulo no puede estar vacio"
             return
         }
         _loading.value = true
-        val now = System.currentTimeMillis()
-        val nota = Nota(
-            uuid = uuid ?: UUID.randomUUID().toString(),
-            titulo = titulo.trim(),
-            contenido = contenido.trim(),
-            materiaId = materiaId,
-            userId = userId,
-            fechaCreacion = if (uuid == null) now else fechaCreacion,
-            fechaModificacion = now
-        )
         viewModelScope.launch {
-            notaRepo.saveNota(userId, nota)
+            notaRepo.saveNota(nota.userId, nota)
                 .onSuccess { _saved.value = true }
                 .onFailure { _error.value = it.message }
             _loading.value = false

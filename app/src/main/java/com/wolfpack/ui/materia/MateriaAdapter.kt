@@ -1,5 +1,6 @@
 package com.wolfpack.ui.materia
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -19,6 +20,9 @@ class MateriaAdapter(
 
         fun bind(materia: Materia) {
             b.tvNombreMateria.text = materia.nombre
+            b.viewColorMateria.setBackgroundColor(parseColor(materia.color))
+            b.tvIconoMateria.text = MateriaIcon.label(materia.icono)
+            b.tvIconoMateria.setTextColor(parseColor(materia.color))
             b.switchActivo.setOnCheckedChangeListener(null)
             b.switchActivo.isChecked = materia.activo
             b.switchActivo.setOnCheckedChangeListener { _, checked ->
@@ -34,6 +38,12 @@ class MateriaAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
         holder.bind(getItem(position))
+
+    private fun parseColor(value: String): Int = try {
+        Color.parseColor(value)
+    } catch (_: IllegalArgumentException) {
+        Color.parseColor("#2196F3")
+    }
 
     companion object {
         private val DIFF = object : DiffUtil.ItemCallback<Materia>() {

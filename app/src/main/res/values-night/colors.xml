@@ -1,0 +1,24 @@
+<resources>
+    <color name="colorPrimary">#25D07A</color>
+    <color name="colorPrimaryDark">#19A95F</color>
+    <color name="colorAccent">#4A755F</color>
+    <color name="colorBackground">#000000</color>
+    <color name="colorSurface">#171719</color>
+    <color name="colorSurfaceVariant">#232326</color>
+    <color name="colorOnPrimary">#062513</color>
+    <color name="colorTextPrimary">#FFFFFF</color>
+    <color name="colorTextSecondary">#B8B8BE</color>
+    <color name="colorInputBackground">#1F1F22</color>
+    <color name="colorDivider">#343438</color>
+    <color name="colorError">#FF6B6B</color>
+    <color name="colorSuccess">#20D676</color>
+    <color name="colorBlueAccent">#54B8FF</color>
+    <color name="colorPinkAccent">#FF4FA3</color>
+    <color name="colorFavorite">#FFC107</color>
+    <color name="colorDisabledIcon">#7B7B82</color>
+    <color name="colorGoogleRed">#EA4335</color>
+    <color name="colorNeonGreenSoft">#123B2A</color>
+    <color name="colorPurpleAccent">#A855F7</color>
+    <color name="colorPurpleSoft">#241633</color>
+    <color name="colorRedSoft">#321416</color>
+</resources>

@@ -15,19 +15,61 @@ class NotaListViewModel(
     private val _notas = MutableLiveData<List<Nota>>()
     val notas: LiveData<List<Nota>> = _notas
 
+    private val _allNotasLive = MutableLiveData<List<Nota>>()
+    val allNotasLive: LiveData<List<Nota>> = _allNotasLive
+
     private val _error = MutableLiveData<String?>()
     val error: LiveData<String?> = _error
 
     private val _loading = MutableLiveData(false)
     val loading: LiveData<Boolean> = _loading
 
+    private var allNotas: List<Nota> = emptyList()
+    private var searchQuery: String = ""
+    private var onlyFavorites: Boolean = false
+    private var selectedMateriaId: String? = null
+
     fun loadNotas(userId: String) {
         _loading.value = true
         viewModelScope.launch {
             repo.getNotas(userId)
-                .onSuccess { _notas.value = it }
+                .onSuccess { list ->
+                    allNotas = list.sortedByDescending { it.fechaModificacion }
+                    _allNotasLive.value = allNotas
+                    applyFilters()
+                }
                 .onFailure { _error.value = it.message }
             _loading.value = false
+        }
+    }
+
+    fun searchNotas(query: String) {
+        searchQuery = query.trim()
+        applyFilters()
+    }
+
+    fun setOnlyFavorites(enabled: Boolean) {
+        onlyFavorites = enabled
+        applyFilters()
+    }
+
+    fun selectMateria(materiaId: String?) {
+        selectedMateriaId = materiaId
+        applyFilters()
+    }
+
+    fun toggleFavorita(userId: String, nota: Nota) {
+        val newValue = !nota.favorita
+        viewModelScope.launch {
+            repo.updateFavorita(userId, nota.uuid, newValue)
+                .onSuccess {
+                    allNotas = allNotas.map {
+                        if (it.uuid == nota.uuid) it.copy(favorita = newValue) else it
+                    }
+                    _allNotasLive.value = allNotas
+                    applyFilters()
+                }
+                .onFailure { _error.value = it.message }
         }
     }
 
@@ -37,5 +79,19 @@ class NotaListViewModel(
                 .onSuccess { loadNotas(userId) }
                 .onFailure { _error.value = it.message }
         }
+    }
+
+    private fun applyFilters() {
+        val filtered = allNotas
+            .filter { nota ->
+                searchQuery.isBlank() ||
+                    nota.titulo.contains(searchQuery, ignoreCase = true) ||
+                    nota.contenido.contains(searchQuery, ignoreCase = true)
+            }
+            .filter { nota -> selectedMateriaId == null || nota.materiaId == selectedMateriaId }
+            .filter { nota -> !onlyFavorites || nota.favorita }
+            .sortedWith(compareByDescending<Nota> { it.favorita }.thenByDescending { it.fechaModificacion })
+
+        _notas.value = filtered
     }
 }

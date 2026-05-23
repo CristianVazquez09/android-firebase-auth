@@ -1,9 +1,7 @@
 package com.wolfpack.data.model
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
+import java.io.Serializable
 
-@Parcelize
 data class Nota(
     val uuid: String = "",
     val titulo: String = "",
@@ -11,8 +9,10 @@ data class Nota(
     val materiaId: String = "",
     val userId: String = "",
     val fechaCreacion: Long = 0L,
-    val fechaModificacion: Long = 0L
-) : Parcelable {
+    val fechaModificacion: Long = 0L,
+    val favorita: Boolean = false,
+    val fechaRecordatorio: Long = 0L
+) : Serializable {
     fun toMap(): Map<String, Any> = mapOf(
         "uuid" to uuid,
         "titulo" to titulo,
@@ -20,7 +20,9 @@ data class Nota(
         "materiaId" to materiaId,
         "userId" to userId,
         "fechaCreacion" to fechaCreacion,
-        "fechaModificacion" to fechaModificacion
+        "fechaModificacion" to fechaModificacion,
+        "favorita" to favorita,
+        "fechaRecordatorio" to fechaRecordatorio
     )
 
     companion object {
@@ -31,7 +33,9 @@ data class Nota(
             materiaId = map["materiaId"] as? String ?: "",
             userId = map["userId"] as? String ?: "",
             fechaCreacion = (map["fechaCreacion"] as? Number)?.toLong() ?: 0L,
-            fechaModificacion = (map["fechaModificacion"] as? Number)?.toLong() ?: 0L
+            fechaModificacion = (map["fechaModificacion"] as? Number)?.toLong() ?: 0L,
+            favorita = map["favorita"] as? Boolean ?: false,
+            fechaRecordatorio = (map["fechaRecordatorio"] as? Number)?.toLong() ?: 0L
         )
     }
 }

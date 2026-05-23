@@ -1,8 +1,41 @@
 <resources>
-    <style name="Theme.PracticaFinal" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.PracticaFinal" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/colorTextPrimary</item>
         <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="android:fontFamily">sans</item>
+        <item name="android:navigationBarColor">@color/colorBackground</item>
+        <item name="android:statusBarColor">@color/colorBackground</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="materialButtonStyle">@style/Widget.NoteClass.Button</item>
+        <item name="textInputStyle">@style/Widget.NoteClass.TextInput</item>
+        <item name="toolbarStyle">@style/Widget.NoteClass.Toolbar</item>
+    </style>
+
+    <style name="Widget.NoteClass.Button" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">28dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
+    </style>
+
+    <style name="Widget.NoteClass.TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxBackgroundColor">@color/colorInputBackground</item>
+        <item name="boxStrokeColor">@color/colorPrimary</item>
+        <item name="hintTextColor">@color/colorPrimary</item>
+        <item name="boxCornerRadiusTopStart">22dp</item>
+        <item name="boxCornerRadiusTopEnd">22dp</item>
+        <item name="boxCornerRadiusBottomStart">22dp</item>
+        <item name="boxCornerRadiusBottomEnd">22dp</item>
+    </style>
+
+    <style name="Widget.NoteClass.Toolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="android:background">@color/colorBackground</item>
+        <item name="titleTextColor">@color/colorTextPrimary</item>
+        <item name="navigationIconTint">@color/colorTextPrimary</item>
     </style>
 </resources>

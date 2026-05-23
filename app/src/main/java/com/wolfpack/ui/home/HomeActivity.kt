@@ -30,7 +30,7 @@ class HomeActivity : BaseActivity() {
 
     private fun displayUserInfo() {
         val email = viewModel.getCurrentUserEmail()
-        binding.tvWelcome.text = "¡Bienvenido!"
+        binding.tvWelcome.text = "Bienvenido"
         binding.tvEmail.text = email
     }
 
