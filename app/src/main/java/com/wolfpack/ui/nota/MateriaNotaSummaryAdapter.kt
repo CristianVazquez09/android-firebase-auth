@@ -30,7 +30,7 @@ class MateriaNotaSummaryAdapter(
             b.tvIconoMateriaResumen.text = MateriaIcon.label(item.icono)
             b.tvIconoMateriaResumen.setTextColor(color)
             b.tvNombreMateriaResumen.text = item.nombre
-            b.tvConteoNotasResumen.text = "${item.count} notas"
+            b.tvConteoNotasResumen.text = "${item.count} ${if (item.count == 1) "nota" else "notas"}"
             b.root.strokeColor = if (item.selected) color else Color.TRANSPARENT
             b.root.strokeWidth = if (item.selected) 3 else 1
             b.root.setOnClickListener { onClick(item) }
